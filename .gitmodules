@@ -1,0 +1,3 @@
+[submodule "Citrine/vendor/spdlog"]
+	path = Citrine/vendor/spdlog
+	url = https://github.com/gabime/spdlog
