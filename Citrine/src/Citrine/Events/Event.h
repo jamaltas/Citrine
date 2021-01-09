@@ -2,8 +2,6 @@
 
 #include "Citrine/Core.h"
 
-#include <string>
-#include <functional>
 
 namespace Citrine {
 

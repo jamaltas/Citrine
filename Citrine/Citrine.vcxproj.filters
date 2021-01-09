@@ -34,6 +34,11 @@
     <ClInclude Include="src\Citrine\Log.h">
       <Filter>Citrine</Filter>
     </ClInclude>
+    <ClInclude Include="src\ctpch.h" />
+    <ClInclude Include="Window.h">
+      <Filter>Citrine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Citrine\Application.cpp">
@@ -42,5 +47,7 @@
     <ClCompile Include="src\Citrine\Log.cpp">
       <Filter>Citrine</Filter>
     </ClCompile>
+    <ClCompile Include="src\ctpch.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
   </ItemGroup>
 </Project>

@@ -10,6 +10,13 @@ workspace "Citrine"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir["GLFW"] = "Citrine/vendor/GLFW/include"
+
+include "Citrine/vendor/GLFW"
+
+
 project "Citrine"
 	location "Citrine"
 	kind "SharedLib"
@@ -17,6 +24,9 @@ project "Citrine"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	pchheader "ctpch.h"
+	pchsource "Citrine/src/ctpch.cpp"
 
 	files
 	{
@@ -27,7 +37,14 @@ project "Citrine"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include;"
+		"%{prj.name}/vendor/spdlog/include;",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"

@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace Citrine {
 
 	class CITRINE_API KeyEvent : public Event
