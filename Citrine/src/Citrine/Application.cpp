@@ -5,6 +5,8 @@
 
 #include <glad/glad.h>
 
+#include "Input.h"
+
 namespace Citrine {
 
 #define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
@@ -13,7 +15,7 @@ namespace Citrine {
 	
 	Application::Application()
 	{
-		CT_CORE_ASSERT(!s_Intance, "Application already exists!")
+		CT_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
 
 		m_Window = std::unique_ptr<Window>(Window::Create());
@@ -64,6 +66,11 @@ namespace Citrine {
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
 
+
+			// Prints all the mouse positions on the screen.
+			auto [x, y] = Input::GetMousePosition();
+			CT_CORE_TRACE("{0}, {1}", x, y);
+			
 			m_Window->OnUpdate();
 		}
 	}
