@@ -13,8 +13,12 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
 IncludeDir["GLFW"] = "Citrine/vendor/GLFW/include"
+IncludeDir["Glad"] = "Citrine/vendor/Glad/include"
+IncludeDir["ImGui"] = "Citrine/vendor/imgui"
 
 include "Citrine/vendor/GLFW"
+include "Citrine/vendor/Glad"
+include "Citrine/vendor/imgui"
 
 
 project "Citrine"
@@ -38,12 +42,17 @@ project "Citrine"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include;",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}"
+
 	}
 
 	links
 	{
 		"GLFW",
+		"Glad",
+		"ImGui",
 		"opengl32.lib"
 	}
 
@@ -55,7 +64,8 @@ project "Citrine"
 		defines
 		{
 			"CT_PLATFORM_WINDOWS",
-			"CT_BUILD_DLL"
+			"CT_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands
@@ -65,14 +75,17 @@ project "Citrine"
 
 	filter "configurations:Debug"
 		defines "CT_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "CT_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "CT_DIST"
+		buildoptions "/MD"
 		optimize "On"
 
 		
@@ -114,12 +127,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "CT_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "CT_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "CT_DIST"
+		buildoptions "/MD"
 		optimize "On"

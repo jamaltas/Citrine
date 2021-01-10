@@ -7,6 +7,18 @@
     <Filter Include="Citrine\Events">
       <UniqueIdentifier>{57B9FB64-4387-EF6A-2C1B-60911888CBCF}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Citrine\ImGui">
+      <UniqueIdentifier>{3D20799E-A9E0-F4D4-721B-3E52DE9A39B1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\OpenGL">
+      <UniqueIdentifier>{1E7D2C1D-8A08-9AE1-9319-1DD6FF23F6E1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Citrine.h" />
@@ -31,23 +43,51 @@
     <ClInclude Include="src\Citrine\Events\MouseEvent.h">
       <Filter>Citrine\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Citrine\ImGui\ImGuiLayer.h">
+      <Filter>Citrine\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Citrine\Layer.h">
+      <Filter>Citrine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Citrine\LayerStack.h">
+      <Filter>Citrine</Filter>
+    </ClInclude>
     <ClInclude Include="src\Citrine\Log.h">
       <Filter>Citrine</Filter>
     </ClInclude>
-    <ClInclude Include="src\ctpch.h" />
-    <ClInclude Include="Window.h">
+    <ClInclude Include="src\Citrine\Window.h">
       <Filter>Citrine</Filter>
     </ClInclude>
-    <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
+    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ctpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Citrine\Application.cpp">
       <Filter>Citrine</Filter>
     </ClCompile>
+    <ClCompile Include="src\Citrine\ImGui\ImGuiLayer.cpp">
+      <Filter>Citrine\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Citrine\Layer.cpp">
+      <Filter>Citrine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Citrine\LayerStack.cpp">
+      <Filter>Citrine</Filter>
+    </ClCompile>
     <ClCompile Include="src\Citrine\Log.cpp">
       <Filter>Citrine</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
+      <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="src\ctpch.cpp" />
-    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
   </ItemGroup>
 </Project>

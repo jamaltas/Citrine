@@ -4,3 +4,6 @@
 [submodule "Citrine/vendor/GLFW"]
 	path = Citrine/vendor/GLFW
 	url = https://github.com/TheCherno/glfw
+[submodule "Citrine/vendor/imgui"]
+	path = Citrine/vendor/imgui
+	url = https://github.com/TheCherno/imgui
