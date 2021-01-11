@@ -159,9 +159,11 @@
     <ClInclude Include="src\Citrine\Events\MouseEvent.h" />
     <ClInclude Include="src\Citrine\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Citrine\Input.h" />
+    <ClInclude Include="src\Citrine\KeyCodes.h" />
     <ClInclude Include="src\Citrine\Layer.h" />
     <ClInclude Include="src\Citrine\LayerStack.h" />
     <ClInclude Include="src\Citrine\Log.h" />
+    <ClInclude Include="src\Citrine\MouseButtonCodes.h" />
     <ClInclude Include="src\Citrine\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />

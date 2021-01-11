@@ -68,8 +68,10 @@ namespace Citrine {
 
 
 			// Prints all the mouse positions on the screen.
-			auto [x, y] = Input::GetMousePosition();
-			CT_CORE_TRACE("{0}, {1}", x, y);
+			// auto [x, y] = Input::GetMousePosition();
+			// CT_CORE_TRACE("{0}, {1}", x, y);
+
+
 			
 			m_Window->OnUpdate();
 		}
