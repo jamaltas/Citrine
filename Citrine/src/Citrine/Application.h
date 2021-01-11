@@ -7,6 +7,8 @@
 #include "Citrine/Events/Event.h"
 #include "Citrine/Events/ApplicationEvent.h"
 
+#include "Citrine/ImGui/ImGuiLayer.h"
+
 namespace Citrine {
 
 	class CITRINE_API Application
@@ -30,6 +32,7 @@ namespace Citrine {
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 

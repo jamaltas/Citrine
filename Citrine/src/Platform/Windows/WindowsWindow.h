@@ -1,8 +1,10 @@
 #pragma once
 
 #include "Citrine/Window.h"
+#include "Citrine/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>
+
 
 namespace Citrine {
 
@@ -29,7 +31,7 @@ namespace Citrine {
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
-
+		GraphicsContext* m_Context;
 
 		// Keeps all windows-specific data grouped here. Can pass just this struct, not whole class.
 		struct WindowData

@@ -1,15 +1,19 @@
 #pragma once
 
 #ifdef CT_PLATFORM_WINDOWS
+#if CT_DYNAMIC_LINK
 	#ifdef CT_BUILD_DLL
 		#define CITRINE_API __declspec(dllexport)
 	#else
 		#define	CITRINE_API __declspec(dllimport)
 	#endif
 #else
-	#error Citrine only supports Windows!
+	#define CITRINE_API
 #endif
 
+#else
+	#error Citrine only supports Windows!
+#endif
 
 #ifdef CT_DEBUG
 	#define CT_ENABLE_ASSERTS

@@ -16,6 +16,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Citrine/vendor/GLFW/include"
 IncludeDir["Glad"] = "Citrine/vendor/Glad/include"
 IncludeDir["ImGui"] = "Citrine/vendor/imgui"
+IncludeDir["glm"] = "Citrine/vendor/glm"
 
 include "Citrine/vendor/GLFW"
 include "Citrine/vendor/Glad"
@@ -24,9 +25,10 @@ include "Citrine/vendor/imgui"
 
 project "Citrine"
 	location "Citrine"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -37,8 +39,12 @@ project "Citrine"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl"
+
 	}
+
 
 	includedirs
 	{
@@ -46,8 +52,8 @@ project "Citrine"
 		"%{prj.name}/vendor/spdlog/include;",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
-
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -59,7 +65,6 @@ project "Citrine"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 
 		defines
@@ -69,33 +74,28 @@ project "Citrine"
 			"GLFW_INCLUDE_NONE"
 		}
 
-		postbuildcommands
-		{
-			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
-		}
-
 	filter "configurations:Debug"
 		defines "CT_DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "CT_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "CT_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
-		
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -109,7 +109,9 @@ project "Sandbox"
 	includedirs
 	{
 		"Citrine/vendor/spdlog/include;",
-		"Citrine/src"
+		"Citrine/src",
+		"Citrine/vendor",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -118,7 +120,6 @@ project "Sandbox"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 
 		defines
@@ -129,14 +130,14 @@ project "Sandbox"
 	filter "configurations:Debug"
 		defines "CT_DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "CT_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "CT_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
